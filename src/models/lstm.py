@@ -1,26 +1,20 @@
 import lightning as L
 from torch import optim, nn
+from ..config.loaders import load_config, ModelConfig
 
 class SardiStanceLSTM(L.LightningModule):
-  def __init__(self, 
-               n_features, 
-               hidden_size, 
-               vocab_size,
-               num_classes,
-               num_layers,
-               dropout,
-               learning_rate,
-               criterion):
+  def __init__(self, config: ModelConfig):
     super(SardiStanceLSTM, self).__init__()
     self.save_hyperparameters()
-    self.n_features = n_features
-    self.hidden_size = hidden_size
-    self.num_layers = num_layers
-    self.dropout = dropout
-    self.criterion = criterion
-    self.learning_rate = learning_rate
-    self.num_classes = num_classes
-    self.vocab_size = vocab_size
+
+    self.n_features = config.n_features
+    self.hidden_size = config.hidden_size
+    self.num_layers = config.num_layers
+    self.dropout = config.dropout
+    self.criterion = config.criterion
+    self.learning_rate = config.learning_rate
+    self.num_classes = config.num_classes
+    self.vocab_size = config.vocab_size
 
     self._load_model()
 

@@ -6,7 +6,7 @@ import lightning as L
 from torch import utils
 from torch.utils.data import Dataset
 
-from config import DataConfig
+from src.config.schemas import DataConfig
 
 class SardiStanceDataset(Dataset):
     def __init__(self, dataset, max_length, tokenizer):
@@ -44,7 +44,7 @@ class SardiStanceDataset(Dataset):
       
       return input_ids, attention_mask, target_encode
 
-class StanceDataModule(L.LightningDataModule):
+class SardiStanceDataModule(L.LightningDataModule):
     def __init__(self,
                  config: DataConfig,
                  max_length,
@@ -58,9 +58,10 @@ class StanceDataModule(L.LightningDataModule):
       self.num_workers = num_workers
       self.tokenizer = tokenizer
       self.config = config
+      
 
     def _load_dataset(self):
-      """
+      """      
       Load the dataset from the path
       path information is stored in the config
       """

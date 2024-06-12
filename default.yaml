@@ -1,0 +1,5 @@
+# config.yaml
+model: !include ./src/config/model.yaml
+data: !include ./src/config/data.yaml
+experiment: !include ./src/config/experiment.yaml
+globals: !include ./src/config/global.yaml

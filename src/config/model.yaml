@@ -1,0 +1,11 @@
+LSTM:
+  n_features: 1024
+  hidden_size: 256
+  num_layers: 3
+  dropout: 0.2
+  criterion: cross_entropy
+  optimizer: adam
+  learning_rate: 0.001
+  num_classes: 5
+  vocab_size: 10000
+  embedding_dim: 128
