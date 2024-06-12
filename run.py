@@ -3,7 +3,7 @@ from src.config.loaders import load_config
 
 def main():
     load_config()
-
+    
     lstm_experiment = LSTMSardiStanceExperiment()
     lstm_experiment.run()
 

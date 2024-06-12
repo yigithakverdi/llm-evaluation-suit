@@ -45,17 +45,18 @@ class ModelConfig(BaseModel):
 
 class DataConfig(BaseModel):
     train_path: str = Field(..., description="Path to training data")
-    val_path: str = Field(..., description="Path to validation data")
     test_path: Optional[str] = Field(None, description="Path to test data (optional)")
+    max_length: int = Field(128, ge=1, description="Maximum sequence length for text models")
     batch_size: int = Field(32, ge=1, description="Batch size for training and validation")
+    num_workers: int = Field(0, ge=0, description="Number of data loader workers")
     # ... other data parameters
 
-    @validator("train_path", "val_path", "test_path", pre=True)
-    def validate_data_path(cls, value):
-        # Check if the path exists
-        if not os.path.exists(value):
-            raise ValueError(f"Data path not found: {value}")
-        return value
+    # @validator("train_path", "val_path", "test_path", pre=True)
+    # def validate_data_path(cls, value):
+    #     # Check if the path exists
+    #     if not os.path.exists(value):
+    #         raise ValueError(f"Data path not found: {value}")
+    #     return value
     
 class GlobalConfig(BaseModel):
     # Add your Global Configs here

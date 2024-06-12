@@ -2,7 +2,7 @@ import yaml
 import os
 
 from pydantic import ValidationError
-from .schemas import ModelConfig#, DataConfig, GlobalConfig, ExperimentConfig
+from .schemas import ModelConfig, DataConfig, GlobalConfig, ExperimentConfig
 
 
 
@@ -51,7 +51,7 @@ def load_config(config_file="default.yaml", overrides_file=None, env_prefix="APP
     try:
         return (
             ModelConfig(**config_data["model"]['LSTM']),
-            # DataConfig(**config_data["data"]),
+            DataConfig(**config_data["data"]['SardiStance']),
             # GlobalConfig(**config_data["global"]),
             # ExperimentConfig(**config_data["experiment"]),
         )

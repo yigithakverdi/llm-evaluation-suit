@@ -1,0 +1,6 @@
+SardiStance:
+  train_path: /mnt/c/Users/hakve/workspace/github/llm-evaluation-suit/data/sardistance/SardiStance-train.jsonl
+  test_path: /mnt/c/Users/hakve/workspace/github/llm-evaluation-suit/data/sardistance/SardiStance-test.jsonl
+  max_length: 128
+  batch_size: 1
+  num_workers: 8
