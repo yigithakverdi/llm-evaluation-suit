@@ -1,0 +1,5 @@
+global:
+  DATASET_DIR: "drive/MyDrive/Datasets/NLP Tasks (Italian)/"
+  DRIVE_DIR: "drive/MyDrive/"
+  SARDISTANCE_DATASET_DIR: "/content/drive/MyDrive/Research Projects/llm-evaluation-suit/dataset/"
+
