@@ -1,0 +1,3 @@
+{"prompt": "Nella frase {{sentence}}, qual è la parte del discorso della parola {{target_word}}? Sostantivo, {{choices}} proprio?"}
+{"prompt": "Basandoti sul testo {{sentence}}, classificherebbe {{target_word}} come Sostantivo, {{choices}} proprio?"}
+{"prompt": "La parola {{target_word}} nella frase {{sentence}} {{choices}} proprio?"}

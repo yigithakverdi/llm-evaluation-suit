@@ -1,0 +1,3 @@
+{"prompt": "Nella frase '{{text}}', il sentimento è {{choices}}?"}
+{"prompt": "Basandoti sul testo '{{text}}', lo classificheresti come {{choices}}?"}
+{"prompt": "Il sentimento espresso in '{{text}}' tende verso {{choices}}?"}

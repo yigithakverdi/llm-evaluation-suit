@@ -1,0 +1,3 @@
+{"prompt": "È '{{concept_B}}' un prerequisito per '{{concept_A}}'? Vero o Falso?"}
+{"prompt": "Secondo il passaggio su '{{concept_A}}' e '{{concept_B}}', è necessario comprendere '{{concept_B}}' per capire '{{concept_A}}'? Vero o Falso?"}
+{"prompt": "Nel contesto di '{{concept_A}}', è necessario comprendere '{{concept_B}}'? Vero o Falso?"}
