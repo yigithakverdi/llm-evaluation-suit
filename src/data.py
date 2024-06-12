@@ -6,6 +6,8 @@ import lightning as L
 from torch import utils
 from torch.utils.data import Dataset
 
+from config import DataConfig
+
 class SardiStanceDataset(Dataset):
     def __init__(self, dataset, max_length, tokenizer):
       self.dataset = dataset
@@ -16,6 +18,7 @@ class SardiStanceDataset(Dataset):
           "FAVOR" : 1,
           "NONE" : 2
       }
+
     def __len__(self):
       return len(self.dataset)
 
@@ -43,27 +46,35 @@ class SardiStanceDataset(Dataset):
 
 class StanceDataModule(L.LightningDataModule):
     def __init__(self,
+                 config: DataConfig,
                  max_length,
                  tokenizer,
                  batch_size = 128,
-                 num_workers=0,
-                 remove_prompt=False,
-                 extra_verbose=False):
+                 num_workers=0,                 
+                 ):
       super().__init__()
       self.max_length = max_length
       self.batch_size = batch_size
       self.num_workers = num_workers
       self.tokenizer = tokenizer
+      self.config = config
 
     def _load_dataset(self):
-      self.path_train = f"{SARDISTANCE_DATASET_DIR}/SardiStance-test.jsonl"
-      self.path_test = f"{SARDISTANCE_DATASET_DIR}/SardiStance-train.jsonl"
+      """
+      Load the dataset from the path
+      path information is stored in the config
+      """
+      self.path_train = self.config.paths.train
+      self.path_test = self.config.paths.test
       self.dataset = {
           "train" : pd.read_json(self.path_train, lines=True),
           "test": pd.read_json(self.path_test, lines=True)
           }
 
-    def setup(self, stage=None):
+    def setup(self):
+      """
+      Default setup function of PyTorch Lightning, sets up the dataset
+      """
       self._load_dataset()      
       self.train_dataset = SardiStanceDataset(
             self.dataset["train"],
@@ -103,7 +114,12 @@ class StanceDataModule(L.LightningDataModule):
         )
 
     def debug_dataloader(self, dataloader, num_batches=1):
-        for index, sample in enumerate(dataloader):
-          if(num_batches == index):
-            break
-          print(sample)        
+      for batch_index, (input_ids, attention_mask, target_encode) in enumerate(dataloader):
+        if num_batches == batch_index:
+          break
+        print(f"Batch {batch_index + 1}:")
+        print("Input IDs:", input_ids)
+        print("Attention Mask:", attention_mask)
+        print("Target Encoding:", target_encode)
+        print()
+  
