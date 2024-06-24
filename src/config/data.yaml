@@ -4,3 +4,6 @@ SardiStance:
   max_length: 128
   batch_size: 1
   num_workers: 8
+
+FEVER:
+  hugginface_path: /mnt/c/Users/hakve/workspace/github/llm-evaluation-suit/data

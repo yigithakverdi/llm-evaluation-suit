@@ -1,3 +1,16 @@
 /.venv
+/.venvw
 /notebooks
 __pycache__
+
+## Ignore some of the unecessary documents
+/docs/_desing.md
+
+
+## Ignore some of the unecessary datasets
+/data/downloads
+
+## Ignoring whole data folder since currently there are a lot of cluttered data
+## mixed with Huggingface datasets and reframed datasets will make it available as soon as
+## I have more clean structure
+/data 
